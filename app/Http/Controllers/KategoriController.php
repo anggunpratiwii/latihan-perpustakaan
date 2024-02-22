@@ -12,4 +12,23 @@ class KategoriController extends Controller
         $kategori = kategori::all();
         return view ('buku.kategori',['kategori'=>$kategori]);
     }
+    public function create(){
+        return view ('buku.kategori_create');
+    }
+    public function store(Request $request){
+        $request->validate([
+            'nama_kategori'=>'required'
+        ]);
+        Kategori::create([
+            'nama_kategori'=>$request->nama_kategori
+        ]);
+        return redirect ('/kategori')->with('success', 'Kategori berhasil ditambahkan!');
+    }
+
+    public function destroy($id){
+        // Kategori::find($id)->destroy();
+        $kategori = Kategori::find($id);
+        $kategori->delete();
+        return redirect('/kategori');
+    }
 }

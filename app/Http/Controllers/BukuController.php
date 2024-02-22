@@ -47,5 +47,11 @@ class BukuController extends Controller
 
         return redirect('/buku')->with('success', 'Buku berhasil ditambahkan!');
     }
+    public function destroy($id){
+        // Buku::find($id)->destroy();
+        $buku = Buku::find($id);
+        $buku->delete();
+        return redirect('/buku');
+    }
 }
 

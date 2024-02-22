@@ -1,9 +1,6 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends ('layouts.perpus12')
+
+@section ('content')
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -21,7 +18,7 @@
                                 <th class="py-2 px-4">Penulis</th>
                                 <th class="py-2 px-4">Penerbit</th>
                                 <th class="py-2 px-4">Tahun</th>
-                                <th class="py-2 px-4">Kategori</th>
+                                <th class="col-1 px-4 py-2">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,11 +29,12 @@
                                     <td class="py-2 px-4">{{ $b->penerbit }}</td>
                                     <td class="py-2 px-4">{{ $b->tahun_terbit }}</td>
                                     <td class="py-2 px-4">
-                                        @foreach ($b->kategoribukurelasi as $kategoribuku)
-                                            @if ($kategoribuku->kategori)
-                                                {{ $kategoribuku->kategori->nama_kategori }}<br>
-                                            @endif
-                                        @endforeach
+                                    <form method="post" action="{{ route('buku.destroy', $b->id)}}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Hapus</button>
+</form>
+</td>
                                     </td>
                                 </tr>
                             @endforeach
@@ -46,4 +44,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+@endsection
