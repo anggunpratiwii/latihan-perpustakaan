@@ -22,22 +22,29 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($buku as $b)
+                            @forelse ($buku as $b)
                                 <tr class="hover:bg-gray-50">
                                     <td class="py-2 px-4">{{ $b->judul }}</td>
                                     <td class="py-2 px-4">{{ $b->penulis }}</td>
                                     <td class="py-2 px-4">{{ $b->penerbit }}</td>
                                     <td class="py-2 px-4">{{ $b->tahun_terbit }}</td>
                                     <td class="py-2 px-4">
-                                    <form method="post" action="{{ route('buku.destroy', $b->id)}}">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Hapus</button>
-</form>
-</td>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                    <form method="post" action="{{route('buku.destroy', $b->id)}}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">
+                                        <i class="fa fa-trash"></i>    
+                                        Hapus</button>
+                                    <td>
+                                    <a class="btn btn-warning" href="{{route('buku.edit', $b->id)}}">Edit</a>
+                                    
+                                </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="6" class="text-center">Tidak ada data buku.</td>
+                                    </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>

@@ -6,7 +6,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        <h1 class="h3 text-2xl font-semibold mb-4">Formulir Edit Kategori</h1>
+                        <h1 class="h3 text-2xl font-semibold mb-4">Formulir Edit Buku</h1>
                     </div>
 
                     <div class="card-body">
@@ -14,12 +14,12 @@
                             <p class="text-success">{{ session('success') }}</p>
                         @endif
 
-                        <form action="{{ route('kategori.update', $kategori->id) }}" method="post" >
+                        <form action="{{ route('buku.update', $buku->id) }}" method="post" >
                             @csrf
                             @method('patch')
                             <div class="mb-4">
-                                <label for="nama_kategori" class="form-label">Nama Kategori:</label>
-                                <input type="text" name="nama_kategori" value="{{ $kategori->nama_kategori }}"  class="form-control" required="required">
+                                <label for="nama_buku" class="form-label">Nama Buku:</label>
+                                <input type="text" name="nama_buku" value="{{ $buku->nama_buku }}"  class="form-control" required="required">
                                 
                             </div>
                             <button type=" submit" class="btn btn-success">Simpan</button>
