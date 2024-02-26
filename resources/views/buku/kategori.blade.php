@@ -27,7 +27,8 @@
                                         Hapus</button>
                                     <td>
                                     <a class="btn btn-warning" href="{{route('kategori.edit', $k->id)}}">Edit</a>
-                                </td>
+</form>
+</td>
                             </tr>
                             @empty
                             <tr>

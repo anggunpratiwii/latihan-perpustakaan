@@ -7,10 +7,12 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <div class="mb-4">
+                    <div class="mb-4 d-flex justify-content-between">
                         <a href="{{ route('peminjaman.tambah') }}" class="bg-blue-500 hover:bg-blue-700 text-black border font-bold py-2 px-4 rounded">
                             + Tambah Data Peminjaman
                         </a>
+                        <a href="{{ route('print') }}" class="btn btn-primary">
+                            <i class="fa fa-download"></i>Ekspor PDF</a>                      
                     </div>
 
                     <table class="table-auto w-full border-collapse border border-gray-400">
@@ -43,6 +45,7 @@
                                         @else
                                             -
                                         @endif
+
                                     </td>
                                 </tr>
                             @empty

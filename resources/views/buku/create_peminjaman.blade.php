@@ -35,7 +35,7 @@
                         <input type="date" required name="tanggal_pengembalian" id="tanggal_pengembalian" class="mt-1 p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300">
                     </div>
                     <br>
-                    <button type="button" class="btn btn-info">
+                    <button type="submit" class="btn btn-info">
                         Simpan
                     </button>
                 </form>
