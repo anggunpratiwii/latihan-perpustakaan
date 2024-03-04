@@ -35,12 +35,18 @@
                                                 <input type="text" name="penerbit" class="w-full border p-2" required>
                                             </div>
 
-                                            <div class="mb-4">
-                                                <label for="tahun_terbit" class="block text-sm font-semibold mb-2">Tahun
-                                                    Terbit:</label>
-                                                <input type="number" name="tahun_terbit" class="w-full border p-2"
-                                                    required>
-                                            </div>
+                                            <div class="mb-3">
+                                <label for="tahun_terbit" class="form-label">Tahun Terbit:</label>
+                                <select name="tahun_terbit" class="form-select custom-select" required>
+                                    @php
+                                        $currentYear = date('Y');
+                                        $startYear = 1900; 
+                                    @endphp
+                                    @for($year = $currentYear; $year >= $startYear; $year--)
+                                        <option value="{{ $year }}">{{ $year }}</option>
+                                    @endfor
+                                </select>
+                            </div>
 
                                             <div class="mb-4">
                                                 <label for="kategori_id"
@@ -50,6 +56,10 @@
                                                     <option value="{{ $k->id }}">{{ $k->nama_kategori }}</option>
                                                     @endforeach
                                                 </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="foto" class="form-label">Foto Buku:</label>
+                                                <input type="file" name="foto" accept="image/*" class="form-control" required>
                                             </div>
 
 

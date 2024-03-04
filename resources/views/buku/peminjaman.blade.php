@@ -3,13 +3,22 @@
 @section ('content')
 
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    <div class="mb-4 d-flex justify-content-between">
-                        <a href="{{ route('peminjaman.tambah') }}" class="bg-blue-500 hover:bg-blue-700 text-black border font-bold py-2 px-4 rounded">
-                            + Tambah Data Peminjaman
+    <<div class="container py-4">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body bg-white">
+                        <h1 class="h3 font-weight-bold mb-4">Data Peminjaman</h1>
+                        @if(session('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
+
+                        <div class="mb-4 d-flex justify-content-between">
+                            <a href="{{ route('peminjaman.tambah') }}" class="btn btn-info">
+                                + Tambah Data Peminjaman
                         </a>
                         <a href="{{ route('print') }}" class="btn btn-primary">
                             <i class="fa fa-download"></i>Ekspor PDF</a>                      
