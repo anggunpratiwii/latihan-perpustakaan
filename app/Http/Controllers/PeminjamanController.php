@@ -6,6 +6,7 @@ use App\Models\Buku;
 use Illuminate\Http\Request;
 use App\Models\Peminjaman;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class PeminjamanController extends Controller
@@ -62,4 +63,16 @@ class PeminjamanController extends Controller
             return $pdf->download('Laporan.pdf');
         }
     
+        public function userPeminjaman()
+        {
+            //mendapatkan id pengguna yang login
+            $userId = Auth::id();
+    
+            //menampilkan data peminjaman yang hanya dimiliki oleh user yang sedang masuk
+            $peminjaman = Peminjaman::with('user', 'buku')
+                ->where('user_id', $userId)
+                ->get();
+    
+            return view('buku.user_index', compact('peminjaman'));
+        }
 }

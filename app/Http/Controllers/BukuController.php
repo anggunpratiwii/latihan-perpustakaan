@@ -31,8 +31,8 @@ class BukuController extends Controller
             'tahun_terbit' => 'required|integer',
             'kategori_id' => 'required',
         ]);
-        $fotoPath = $request->file('foto')->store('buku_images','public');
 
+        $fotoPath =$request->file('foto')->store('buku_images', 'public');
           // Cari kategori berdasarkan ID
         $kategori = Kategori::find($request->kategori_id);
  
@@ -44,7 +44,6 @@ class BukuController extends Controller
             'penerbit' => $request->penerbit,
             'tahun_terbit' => $request->tahun_terbit,
         ]);
-
 
         $buku->kategori()->attach($kategori);
 
@@ -79,6 +78,11 @@ class BukuController extends Controller
 
     public function welcome(){
         $buku = Buku::all();
-        return view ('welcome', ['buku'=>$buku]);
+        return view('welcome', ['buku' => $buku]);
+    }
+
+    public function detail($id){
+    $buku = Buku::find($id);
+    return view('buku.detail', ['buku' => $buku]);
     }
 }

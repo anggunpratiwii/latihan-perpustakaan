@@ -48,17 +48,16 @@
                     <span>Dashboard</span></a>
             </li>
 
+            </li>
+            @role('admin')
             <!-- Divider -->
             <hr class="sidebar-divider">
-
-           
-           
-
+        
             <!-- Heading -->
             <div class="sidebar-heading">
                 perpustakaan
             </div>
-
+            
             
                         
 
@@ -66,7 +65,7 @@
             <li class="nav-item">
              
                   
-
+            
             <li class="nav-item active">
                 <a class="nav-link" href="{{route ('kategori')}}">
                     <i class="fas fa-fw fa-book"></i>
@@ -84,7 +83,14 @@
                     <i class="fas fa-fw fa-bookmark"></i>
                     <span>Data Peminjaman</span></a>
             </li>
-
+            @endrole
+            @role('user')
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('peminjaman.user')}}">
+                    <i class="fas fa-fw fa-plus"></i>
+                    <span>Data Peminjaman</span></a>
+            </li>
+            @endrole
            
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">

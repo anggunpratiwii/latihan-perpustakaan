@@ -84,7 +84,7 @@
                         <p class="card-text">{{$b->penulis}}</p>
                         <p class="card-text">{{$b->penerbit}}</p>
                         <p class="card-text">{{$b->tahun_terbit}}</p>
-                        <a href="#" class="btn btn-primary">Detail Buku</a>
+                        <a href="{{route('detail', $b->id) }}" class="btn btn-primary">Detail Buku</a>
                     </div>
                 </div>
             </div>
