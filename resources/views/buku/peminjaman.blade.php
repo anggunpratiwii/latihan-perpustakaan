@@ -31,6 +31,7 @@
                                 <th class="px-4 py-2 border">Buku yang Dipinjam</th>
                                 <th class="px-4 py-2 border">Tanggal Peminjaman</th>
                                 <th class="px-4 py-2 border">Tanggal Pengembalian</th>
+                                <th class="px-4 py-2 border">Tanggal Sekarang</th>
                                 <th class="px-4 py-2 border">Status</th>
                                 <th class="px-4 py-2 border">Aksi</th>
                             </tr>
@@ -42,7 +43,18 @@
                                     <td class="px-4 py-2 border">{{ $p->buku->judul }}</td>
                                     <td class="px-4 py-2 border">{{ $p->tanggal_peminjaman }}</td>
                                     <td class="px-4 py-2 border">{{ $p->tanggal_pengembalian }}</td>
-                                    <td class="px-4 py-2 border">{{ $p->status }}</td>
+                                    <td class="px-4 py-2 border">{{ $p->tanggal_sekarang }}</td>
+                                  
+
+                                    <td class="px-4 py-2">
+                                        @if($p->status === 'Dipinjam')
+                                           <span class="badge bg-warning">{{ $p->status }}</span>
+                                        @elseif($p->status === 'Dikembalikan')
+                                           <span class="badge bg-primary">{{ $p->status }}</span>
+                                        @elseif($p->status === 'Denda')
+                                           <span class="badge bg-danger">{{ $p->status }}</span>   
+                                           @endif
+                                    </td>
                                     <td class="px-4 py-2 border">
                                         @if($p->status === 'Dipinjam')
                                             <form action="{{ route('peminjaman.kembalikan', $p->id) }}" method="post">

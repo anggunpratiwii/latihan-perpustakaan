@@ -27,12 +27,12 @@
 
                     <div class="mb-3">
                         <label for="tanggal_peminjaman" class="block text-sm font-medium text-gray-700">Tanggal Peminjaman:</label>
-                        <input type="date" required name="tanggal_peminjaman" id="tanggal_peminjaman" class="mt-1 p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300">
+                        <input type="date" required name="tanggal_peminjaman" id="tanggal_peminjaman" class="mt-1 p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300 " class="form-control" value="{{ date('Y-m-d') }}" readonly>
                     </div>
 
                     <div class="mb-3">
                         <label for="tanggal_pengembalian" class="block text-sm font-medium text-gray-700">Tanggal Pengembalian:</label>
-                        <input type="date" required name="tanggal_pengembalian" id="tanggal_pengembalian" class="mt-1 p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300">
+                        <input type="date" required name="tanggal_pengembalian" id="tanggal_pengembalian" class="mt-1 p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300" class="form-control" value="{{\Carbon\Carbon::parse(date('Y-m-d'))->addDays(3)->format('Y-m-d') }}">
                     </div>
                     <br>
                     <button type="submit" class="btn btn-info">
