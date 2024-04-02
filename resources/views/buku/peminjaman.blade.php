@@ -55,18 +55,20 @@
                                            <span class="badge bg-danger">{{ $p->status }}</span>   
                                            @endif
                                     </td>
-                                    <td class="px-4 py-2 border">
-                                        @if($p->status === 'Dipinjam')
-                                            <form action="{{ route('peminjaman.kembalikan', $p->id) }}" method="post">
+                                    <td class="px-4 py-2">
+                                        @if ($p->status === 'Dipinjam')
+                                            <form id="from {{$p->id}}" action="{{ route('peminjaman.kembalikan', $p->id) }}" method="post">
                                                 @csrf
-                                                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-black border font-bold py-2 px-4 rounded">
-                                                    Kembalikan
-                                                </button>
+                                                <button type="submit" class="btn btn-primary">
+                                                    Kembalikan</button>
                                             </form>
-                                        @else
+                                        @elseif ($p->status === 'Denda')
+                                            <a href="{{route ('peminjaman.denda', $p->id)}}" class="btn btn-danger">
+                                            Bayar Denda
+                                            </a>
+                                            @else ($p-> === 'Dikembalikan')
                                             -
                                         @endif
-
                                     </td>
                                 </tr>
                             @empty

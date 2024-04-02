@@ -88,4 +88,15 @@ class PeminjamanController extends Controller
     
             return view('buku.user_index', compact('peminjaman'));
         }
+
+        public function bayarDenda($id)
+        {
+            $peminjaman = Peminjaman::findOrFail($id);
+            $peminjaman->status = 'Dikembalikan';
+            $peminjaman->tanggal_sekarang = now();
+            $peminjaman->save();
+
+            return redirect()->route('peminjaman')->with('success', 'Denda berhasil Dibayar');
+        }
+        
 }
